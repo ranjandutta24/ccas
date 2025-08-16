@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(16, 25, 75);
+    padding: 10px 0;
+}
+li{
+  margin: 5px 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.header li.active {
+  // background: #4cafef;
+  color: #fdfa54;
+  font-weight: 500;
+}

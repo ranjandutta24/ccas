@@ -1,0 +1,54 @@
+.status-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.status-table caption {
+  caption-side: top;
+  text-align: left;
+  padding: 10px;
+}
+
+.header-btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: default;
+}
+
+.status-table th,
+.status-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.status-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.section-header th {
+  background-color: #ffd700;
+  color: #000;
+  font-size: 18px;
+}
+
+.status-running {
+  background-color: #32cd32; /* green */
+  color: white;
+  font-weight: bold;
+}
+
+.status-stopped {
+  background-color: #ff6347; /* red */
+  color: white;
+  font-weight: bold;
+}

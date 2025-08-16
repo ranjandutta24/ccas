@@ -1,0 +1,51 @@
+<!-- Title Button Outside the Table -->
+<!-- <div class="mb-3">
+    <button class="btn btn-primary btn-lg w-100 mb-2">Centralized Compressed Air Station Overview</button>
+  </div>
+
+  <!-- Data Table -->
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th *ngFor="let label of compressorLabels">{{ label }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let param of parameters">
+      <td>{{ param.label }} {{ param.unit }}</td>
+      <td [attr.colspan]="compressorLabels.length">{{ param.value }}</td>
+    </tr>
+
+    <tr>
+      <td>Compressor Flow (Nm³/hr)</td>
+      <td *ngFor="let flow of compressorFlows">{{ flow }}</td>
+    </tr>
+
+    <tr>
+      <td>Current (amp)</td>
+      <td *ngFor="let current of compressorCurrents">{{ current }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr class="table-info">
+      <th>Plant Name</th>
+      <th>Instrument Grade Flow(Nm3/hr)</th>
+      <th>Instrument Grade Pressure(kg/cm2)</th>
+      <th>Plant Grade Flow(Nm3/hr)</th>
+      <th colspan="2">Plant Grade Pressure(Nm3/hr)(kg/cm2)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let plant of plants">
+      <td>{{ plant }}</td>
+      <td>34</td>
+      <td>34</td>
+      <td>34</td>
+      <td colspan="2">34</td>
+    </tr>
+  </tbody>
+</table>

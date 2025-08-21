@@ -1,30 +1,66 @@
-<!-- Title Button Outside the Table -->
-<!-- <div class="mb-3">
-    <button class="btn btn-primary btn-lg w-100 mb-2">Centralized Compressed Air Station Overview</button>
-  </div>
-
-  <!-- Data Table -->
 <table>
   <thead>
     <tr>
       <th>Parameter</th>
-      <th *ngFor="let label of compressorLabels">{{ label }}</th>
+      <th [ngClass]="MOTOR_CURR_COMP1 <= 50 ? 'colorRed' : 'colorGreen'">
+        Compressor 1
+      </th>
+      <th [ngClass]="MOTOR_CURR_COMP2 <= 50 ? 'colorRed' : 'colorGreen'">
+        Compressor 2
+      </th>
+      <th [ngClass]="MOTOR_CURR_COMP3 <= 50 ? 'colorRed' : 'colorGreen'">
+        Compressor 3
+      </th>
+      <th [ngClass]="MOTOR_CURR_COMP4 <= 50 ? 'colorRed' : 'colorGreen'">
+        Compressor 4
+      </th>
+      <th [ngClass]="MOTOR_CURR_COMP5 <= 50 ? 'colorRed' : 'colorGreen'">
+        Compressor 5
+      </th>
+      <th [ngClass]="MOTOR_CURR_COMP6 <= 50 ? 'colorRed' : 'colorGreen'">
+        Compressor 6
+      </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let param of parameters">
-      <td>{{ param.label }} {{ param.unit }}</td>
-      <td [attr.colspan]="compressorLabels.length">{{ param.value }}</td>
+    <tr>
+      <td>IGCA Flow (Nm³/hr)</td>
+      <td [attr.colspan]="6">{{ igcaFlow }}</td>
+    </tr>
+    <tr>
+      <td>IGCA Pressure (kg/cm²)</td>
+      <td [attr.colspan]="6">{{ igcaPresser }}</td>
+    </tr>
+
+    <tr>
+      <td>PGCA Flow (Nm³/hr)</td>
+      <td [attr.colspan]="6">{{ pgcaFlow }}</td>
+    </tr>
+
+    <tr>
+      <td>PGCA Pressure (kg/cm²)</td>
+      <td [attr.colspan]="6">{{ pgcaPresser }}</td>
     </tr>
 
     <tr>
       <td>Compressor Flow (Nm³/hr)</td>
-      <td *ngFor="let flow of compressorFlows">{{ flow }}</td>
+      <td>{{ AI_6_COMP1 }}</td>
+      <td>{{ AI_6_COMP2 }}</td>
+      <td>{{ AI_6_COMP3 }}</td>
+      <td>{{ AI_6_COMP4 }}</td>
+      <td>{{ AI_6_COMP5 }}</td>
+      <td>{{ AI_6_COMP6 }}</td>
+      <!-- <td *ngFor="let flow of compressorFlows">{{ flow }}</td> -->
     </tr>
 
     <tr>
       <td>Current (amp)</td>
-      <td *ngFor="let current of compressorCurrents">{{ current }}</td>
+      <td>{{ MOTOR_CURR_COMP1 }}</td>
+      <td>{{ MOTOR_CURR_COMP2 }}</td>
+      <td>{{ MOTOR_CURR_COMP3 }}</td>
+      <td>{{ MOTOR_CURR_COMP4 }}</td>
+      <td>{{ MOTOR_CURR_COMP5 }}</td>
+      <td>{{ MOTOR_CURR_COMP6 }}</td>
     </tr>
   </tbody>
 </table>
@@ -42,10 +78,10 @@
   <tbody>
     <tr *ngFor="let plant of plants">
       <td>{{ plant }}</td>
-      <td>34</td>
-      <td>34</td>
-      <td>34</td>
-      <td colspan="2">34</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td colspan="2">0</td>
     </tr>
   </tbody>
 </table>

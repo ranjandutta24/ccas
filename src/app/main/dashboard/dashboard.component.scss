@@ -1,0 +1,57 @@
+.status{
+    display: flex;
+}
+.graph1{
+    display: flex;
+}
+.graph2{
+    display: flex;
+}
+.graph3{
+    display: flex;
+}
+.each_com{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid black
+    ;
+    padding: 10px;
+}
+
+.com_icon{
+    height: 200px;
+}
+
+.each_g1{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+}
+.each_g2{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+}
+.each_g3{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.red_text{
+color: red;
+font-weight: bold;
+font-size: 25px;
+}
+.green_text{
+color: rgb(35, 206, 35);
+font-weight: bold;
+font-size: 25px;
+}

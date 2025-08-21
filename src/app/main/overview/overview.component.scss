@@ -2,7 +2,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     font-family: Arial, sans-serif;
-    margin-top: 1rem;
+    // margin-top: 1rem;
   }
   
   thead {
@@ -46,4 +46,12 @@ table {
     background-color: #d1ecf1;
     font-weight: bold;
   }
-  
+  .colorRed{
+    background-color: #f1594eab;
+  }
+  .colorGreen{
+    background-color: #55e50b42;
+  }
+  .colorDefault{
+    background-color: #979797d5;
+  }

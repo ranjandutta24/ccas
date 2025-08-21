@@ -1,1 +1,236 @@
-<p>dashboard works!</p>
+<div class="main">
+  <div class="status">
+    <div
+      class="each_com"
+      [ngClass]="MOTOR_CURR_COMP1 <= 50 ? 'red_text' : 'green_text'"
+    >
+      I
+      <img
+        class="com_icon"
+        [src]="MOTOR_CURR_COMP1 <= 50 ? deactive_compath : active_compath"
+        alt=""
+      />
+    </div>
+    <div
+      class="each_com"
+      [ngClass]="MOTOR_CURR_COMP2 <= 50 ? 'red_text' : 'green_text'"
+    >
+      II
+      <img
+        class="com_icon"
+        [src]="MOTOR_CURR_COMP2 <= 50 ? deactive_compath : active_compath"
+        alt=""
+      />
+    </div>
+    <div
+      class="each_com"
+      [ngClass]="MOTOR_CURR_COMP3 <= 50 ? 'red_text' : 'green_text'"
+    >
+      III
+      <img
+        class="com_icon"
+        [src]="MOTOR_CURR_COMP3 <= 50 ? deactive_compath : active_compath"
+        alt=""
+      />
+    </div>
+    <div
+      class="each_com"
+      [ngClass]="MOTOR_CURR_COMP4 <= 50 ? 'red_text' : 'green_text'"
+    >
+      IV
+      <img
+        class="com_icon"
+        [src]="MOTOR_CURR_COMP4 <= 50 ? deactive_compath : active_compath"
+        alt=""
+      />
+    </div>
+    <div
+      class="each_com"
+      [ngClass]="MOTOR_CURR_COMP5 <= 50 ? 'red_text' : 'green_text'"
+    >
+      V
+      <img
+        class="com_icon"
+        [src]="MOTOR_CURR_COMP5 <= 50 ? deactive_compath : active_compath"
+        alt=""
+      />
+    </div>
+    <div
+      class="each_com"
+      [ngClass]="MOTOR_CURR_COMP6 <= 50 ? 'red_text' : 'green_text'"
+    >
+      VI
+      <img
+        class="com_icon"
+        [src]="MOTOR_CURR_COMP6 <= 50 ? deactive_compath : active_compath"
+        alt=""
+      />
+    </div>
+  </div>
+
+  <div class="graph1">
+    <div class="each_g1">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+    <div class="each_g1">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+    <div class="each_g1">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+    <div class="each_g1">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+    <div class="each_g1">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+    <div class="each_g1">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+  </div>
+  <div class="graph2">
+    <div class="each_g2">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+    <div class="each_g2">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+    <div class="each_g2">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+    <div class="each_g2">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+    <div class="each_g2">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+    <div class="each_g2">
+      <apx-chart
+        #chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [plotOptions]="chartOptions.plotOptions"
+        [dataLabels]="chartOptions.dataLabels"
+        [colors]="chartOptions.colors"
+        [legend]="chartOptions.legend"
+      >
+      </apx-chart>
+    </div>
+  </div>
+  <div class="graph3">
+    <div class="each_g3">
+      <!-- <apx-chart
+        #chart1
+        [series]="series"
+        [chart]="chart"
+        [dataLabels]="dataLabels"
+        [markers]="markers"
+        [title]="title"
+        [fill]="fill"
+        [yaxis]="yaxis"
+        [xaxis]="xaxis"
+        [tooltip]="tooltip"
+        [autoUpdateSeries]="true"
+      ></apx-chart> -->
+    </div>
+    <div class="each_g3">Line chart</div>
+  </div>
+</div>

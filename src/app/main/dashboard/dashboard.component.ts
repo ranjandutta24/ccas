@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import {
   ApexChart,
   ChartComponent,
@@ -7,19 +8,12 @@ import {
   ApexPlotOptions,
   ApexLegend,
   ApexAxisChartSeries,
-  // ApexTitleSubtitle,
-  // ApexFill,
-  // ApexMarkers,
-  // ApexYAxis,
-  // ApexXAxis,
-  // ApexTooltip,
 } from 'ng-apexcharts';
-import { dataSeries } from './data-series';
 import { SseService } from 'src/app/service/sse.servece';
+
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
-
   dataLabels: ApexDataLabels;
   plotOptions: ApexPlotOptions;
   legend: ApexLegend;
@@ -32,16 +26,6 @@ export type ChartOptions = {
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  // public series: ApexAxisChartSeries;
-  // public chart: ApexChart;
-  // public dataLabels: ApexDataLabels;
-  // public markers: ApexMarkers;
-  // public title: ApexTitleSubtitle;
-  // public fill: ApexFill;
-  // public yaxis: ApexYAxis;
-  // public xaxis: ApexXAxis;
-  // public tooltip: ApexTooltip;
-
   @ViewChild('chart') chart!: ChartComponent;
 
   igcaFlow: number = 0;
@@ -55,7 +39,7 @@ export class DashboardComponent implements OnInit {
   AI_6_COMP5: number = 0;
   AI_6_COMP6: number = 0;
 
-  MOTOR_CURR_COMP1: any = 0;
+  MOTOR_CURR_COMP1: number = 0;
   MOTOR_CURR_COMP2: number = 0;
   MOTOR_CURR_COMP3: number = 0;
   MOTOR_CURR_COMP4: number = 0;
@@ -65,11 +49,9 @@ export class DashboardComponent implements OnInit {
   private sseSub?: Subscription;
   public chartOptions: ChartOptions;
   active_compath = './../../../assets/compressor_running_with_smoke.gif';
-  // active_compath = './../../../assets/compressor.png';
   deactive_compath = './../../../assets/compressor (1).png';
 
   constructor(private sseService: SseService) {
-    // this.initChartData();
     this.chartOptions = {
       series: [
         {
@@ -94,9 +76,9 @@ export class DashboardComponent implements OnInit {
         height: 105,
         type: 'bar',
         toolbar: {
-          show: true, // show toolbar but customize it
+          show: true,
           tools: {
-            download: false, // ❌ hides the download (PNG/SVG/CSV) option
+            download: false,
             selection: true,
             zoom: true,
             zoomin: true,
@@ -104,6 +86,9 @@ export class DashboardComponent implements OnInit {
             pan: true,
             reset: true,
           },
+        },
+        animations: {
+          enabled: false, // Disable animations to reduce flickering
         },
       },
       plotOptions: {
@@ -136,9 +121,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.chartOptions);
-    this.sseService
+    this.sseSub = this.sseService
       .getServerSentEvent('http://10.150.6.15:4060/api/utility/ccas_dashboard')
+      .pipe(debounceTime(100)) // Add debounce to reduce update frequency
       .subscribe((data: any) => {
         this.igcaFlow = parseInt(data.IGCA_FLOW);
         this.igcaPresser = parseFloat(data.IGCA_PRESSER.toFixed(2));
@@ -156,78 +141,39 @@ export class DashboardComponent implements OnInit {
         this.MOTOR_CURR_COMP4 = parseInt(data.MOTOR_CURR_COMP4);
         this.MOTOR_CURR_COMP5 = parseInt(data.MOTOR_CURR_COMP5);
         this.MOTOR_CURR_COMP6 = parseInt(data.MOTOR_CURR_COMP6);
-        this.chartOptions!.series[0]!.data[0]!.y = this.MOTOR_CURR_COMP1;
-        this.chart.updateSeries(this.chartOptions.series, true);
+
+        // Update chart data without causing full re-render
+        if (this.chart && this.chartOptions) {
+          this.chart.updateSeries(
+            [
+              {
+                name: 'Actual',
+                data: [
+                  {
+                    x: 'Current Amp',
+                    y: this.MOTOR_CURR_COMP1,
+                    goals: [
+                      {
+                        name: 'Expected',
+                        value: 600,
+                        strokeWidth: 5,
+                        strokeColor: '#775DD0',
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+            false
+          ); // The 'false' parameter prevents animation
+        }
       });
   }
 
-  // public initChartData(): void {
-  //   let ts2 = 1484418600000;
-  //   let dates = [];
-  //   for (let i = 0; i < 120; i++) {
-  //     ts2 = ts2 + 86400000;
-  //     dates.push([ts2, dataSeries[1][i].value]);
-  //   }
-
-  //   this.series = [
-  //     {
-  //       name: "XYZ MOTORS",
-  //       data: dates
-  //     }
-  //   ];
-  //   this.chart = {
-  //     type: "area",
-  //     stacked: false,
-  //     height: 350,
-  //     zoom: {
-  //       type: "x",
-  //       enabled: true,
-  //       autoScaleYaxis: true
-  //     },
-  //     toolbar: {
-  //       autoSelected: "zoom"
-  //     }
-  //   };
-  //   this.dataLabels = {
-  //     enabled: false
-  //   };
-  //   this.markers = {
-  //     size: 0
-  //   };
-  //   this.title = {
-  //     text: "Stock Price Movement",
-  //     align: "left"
-  //   };
-  //   this.fill = {
-  //     type: "gradient",
-  //     gradient: {
-  //       shadeIntensity: 1,
-  //       inverseColors: false,
-  //       opacityFrom: 0.5,
-  //       opacityTo: 0,
-  //       stops: [0, 90, 100]
-  //     }
-  //   };
-  //   this.yaxis = {
-  //     labels: {
-  //       formatter: function(val) {
-  //         return (val / 1000000).toFixed(0);
-  //       }
-  //     },
-  //     title: {
-  //       text: "Price"
-  //     }
-  //   };
-  //   this.xaxis = {
-  //     type: "datetime"
-  //   };
-  //   this.tooltip = {
-  //     shared: false,
-  //     y: {
-  //       formatter: function(val) {
-  //         return (val / 1000000).toFixed(0);
-  //       }
-  //     }
-  //   };
-  // }
+  ngOnDestroy(): void {
+    // Clean up subscription to prevent memory leaks
+    if (this.sseSub) {
+      this.sseSub.unsubscribe();
+    }
+  }
 }
